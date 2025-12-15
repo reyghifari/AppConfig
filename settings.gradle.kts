@@ -22,4 +22,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "ConfigAppLibrary"
 include(":app-config")
-include(":app-config-core")

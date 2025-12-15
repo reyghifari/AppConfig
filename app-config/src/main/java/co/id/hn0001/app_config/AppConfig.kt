@@ -1,11 +1,11 @@
 package co.id.hn0001.app_config
 
 import android.content.Context
-import co.id.hn0001.app_config_core.core.model.dropdown.ModelDropdown
-import co.id.hn0001.app_config_core.core.storage.BaseURL
-import co.id.hn0001.app_config_core.core.storage.SetupPref
-import co.id.hn0001.app_config_core.core.util.ConfigNotification
-import co.id.hn0001.app_config_core.core.util.exception.ExceptionLogging
+import co.id.hn0001.app_config.core.model.dropdown.ModelDropdown
+import co.id.hn0001.app_config.core.storage.BaseURL
+import co.id.hn0001.app_config.core.storage.SetupPref
+import co.id.hn0001.app_config.core.util.ConfigNotification
+import co.id.hn0001.app_config.core.util.exception.ExceptionLogging
 
 object AppConfig {
     fun init(context: Context, finishDestination : String, listEnvironmentUrl: List<String>) {
