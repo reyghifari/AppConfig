@@ -2,8 +2,8 @@ package co.id.hn0001.app_config
 
 import android.app.Activity
 import android.content.Intent
-import co.id.hn0001.app_config_core.core.base.BaseActivityProcess
-import co.id.hn0001.app_config_core.core.storage.SetupPref
+import co.id.hn0001.app_config.core.base.BaseActivityProcess
+import co.id.hn0001.app_config.core.storage.SetupPref
 
 
 class ActivityProcess : BaseActivityProcess() {
