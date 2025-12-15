@@ -48,10 +48,11 @@ afterEvaluate {
             create<MavenPublication>("release") {
                 from(components["release"])
 
-                groupId = "co.id.hn0001.appconfig"
-                artifactId = "appconfig"
+                groupId = "com.github.reyghifari"
+                artifactId = "app-config"
                 version = System.getenv("VERSION")?.removePrefix("v") ?: "1.0.0"
             }
         }
     }
 }
+
