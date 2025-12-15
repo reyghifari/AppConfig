@@ -8,10 +8,10 @@ plugins {
 
 android {
     namespace = "co.id.hn0001.app_config"
-    compileSdk = 36
+    compileSdk = 34
 
     defaultConfig {
-        minSdk = 26
+        minSdk = 24
     }
 
     buildTypes {
@@ -19,17 +19,20 @@ android {
             isMinifyEnabled = false
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
 
     buildFeatures {
         compose = true
     }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
     publishing {
         singleVariant("release") {
             withSourcesJar()
@@ -38,9 +41,6 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -48,18 +48,22 @@ dependencies {
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
     implementation(libs.lottie.compose)
     implementation(libs.editorkit)
     implementation(libs.language.json)
     implementation(libs.language.kotlin)
     implementation(libs.sqlcipher)
-    implementation(libs.sqlite)
     implementation(libs.gson)
     implementation(libs.androidx.constraintlayout.compose)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.okhttp)
     implementation(libs.okhttp.logging)
+    implementation("com.google.accompanist:accompanist-pager:0.30.1")
     implementation(libs.work.runtime)
+
 
     // Room
     implementation(libs.androidx.room.runtime)
@@ -76,8 +80,19 @@ afterEvaluate {
                 groupId = "com.github.reyghifari"
                 artifactId = "app-config"
                 version = System.getenv("VERSION")?.removePrefix("v") ?: "1.0.0"
+
+                pom {
+                    name.set("AppConfig")
+                    description.set("App Configuration Library")
+
+                    licenses {
+                        license {
+                            name.set("The Apache License, Version 2.0")
+                            url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                        }
+                    }
+                }
             }
         }
     }
 }
-
