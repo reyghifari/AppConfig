@@ -3,6 +3,7 @@ package co.id.hn0001.app_config.ui.screen.home
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
@@ -33,6 +34,7 @@ class HomeActivity : BChucker() {
     override fun Content() {
         Column(
             modifier = Modifier.fillMaxSize()
+                .statusBarsPadding()
         ) {
             AppBar(
                 title = "Application Config",

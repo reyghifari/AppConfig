@@ -1,7 +1,10 @@
 package co.id.hn0001.app_config.ui.component
 
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -9,11 +12,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.constraintlayout.compose.ConstraintLayout
-import androidx.constraintlayout.compose.Dimension
 import co.id.hn0001.app_config.ui.theme.Dimens
 import co.id.hn0001.app_config.ui.theme.ConfigAppTheme
 
@@ -25,34 +27,27 @@ fun SwitchConfig(
     onCheckedChange: (Boolean) -> Unit = {},
 ) {
     var lChecked by remember { mutableStateOf(checked) }
-    ConstraintLayout(
-        modifier
+
+    Row(
+        modifier = modifier
             .height(Dimens.x12)
-            .fillMaxWidth()
+            .fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        val (text, switch) = createRefs()
         Text(
             text = label,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
-            modifier = Modifier.constrainAs(text) {
-                start.linkTo(parent.start)
-                top.linkTo(parent.top)
-                bottom.linkTo(parent.bottom)
-                end.linkTo(switch.start, Dimens.x3)
-                width = Dimension.fillToConstraints
-            }
+            modifier = Modifier.weight(1f)
         )
+
+        Spacer(modifier = Modifier.width(Dimens.x3))
+
         Switch(
             checked = lChecked,
             onCheckedChange = {
                 lChecked = it
                 onCheckedChange(it)
-            },
-            modifier = Modifier.constrainAs(switch) {
-                end.linkTo(parent.end)
-                top.linkTo(parent.top)
-                bottom.linkTo(parent.bottom)
             }
         )
     }
@@ -63,5 +58,15 @@ fun SwitchConfig(
 fun SwitchPreview() {
     ConfigAppTheme {
         SwitchConfig()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun SwitchWithLongLabelPreview() {
+    ConfigAppTheme {
+        SwitchConfig(
+            label = "This is a very long label that should be truncated with ellipsis"
+        )
     }
 }
