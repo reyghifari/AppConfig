@@ -9,7 +9,7 @@ Android library for application configuration, including Base URL environment ma
 
 ## 📦 Installation
 
-### Step 1: Add JitPack repository
+### Add JitPack repository
 
 Add the following to your `settings.gradle.kts` (root project):
 ```kotlin
@@ -51,7 +51,12 @@ dependencies {
 }
 ```
 
-### Initialize the Library
+### Add Push Notification Permission Manifest
+
+```
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+```
+
 
 ```
 class MyApplication : Application() {
@@ -62,7 +67,8 @@ class MyApplication : Application() {
         // Initialize App Config
         AppConfig.init(
             context = this,
-            environments = listOf(
+            finishDestination = "com.yourapplication.MainActivity" // customize your finish page
+            listEnvironmentUrl = listOf(
                 "https://api-dev.example.com/",
                 "https://api-sit.example.com/",
                 "https://api-uat.example.com/",
